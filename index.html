@@ -200,7 +200,7 @@
     L.Control.Legend = L.Control.extend({
         onAdd: function(map) {
             var img = L.DomUtil.create('img');
-            img.src = 'Database/Nonspatial/Icon/legend.png';
+            img.src = 'Database/Nonspatial/Icon/legenda.png';
             img.style.width = '250px';
             return img;
         }
@@ -224,7 +224,7 @@
         style: function (feature) {
             if (feature.properties.Status === "Jalan Kabupaten" ) {
                 return {
-                    color: "#F08080", //Warna garis
+                    color: "#5CE1E6", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
@@ -326,7 +326,7 @@
             }
             else if (feature.properties.Kondisi === "SEDANG" ) {
                 return {
-                    color: "#008000", //Warna garis
+                    color: "##FFFF00", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
@@ -334,7 +334,7 @@
             }
             else if (feature.properties.Kondisi === "RUSAK RINGAN" ) {
                 return {
-                    color: "#FFFF00", //Warna garis
+                    color: "#FFFFFF", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
@@ -408,7 +408,7 @@
         style: function (feature) {
             if (feature.properties.STATUS === "Nasional" ) {
                 return {
-                    color: "#FFFF00", //Warna garis
+                    color: "#5E17EB", //Warna garis
                     dashArray: '',
                     weight: 5, //Tebal garis
                     opacity: 1, //Transparansi garis
@@ -465,7 +465,7 @@ $.getJSON("Database/Spatial/jlnprovjatim.geojson", function (data) {
         style: function (feature) {
             if (feature.properties.status === "Provinsi" ) {
                 return {
-                    color: "#FF8C00", //Warna garis
+                    color: "#38B6FF", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
