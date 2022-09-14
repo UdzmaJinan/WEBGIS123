@@ -406,7 +406,7 @@
 
     $.getJSON("Database/Spatial/jalnasjtm.geojson", function (data) {
         Jalan_Nasional.addData(data);
-        // map.addLayer(Jalan_Nasional);
+        map.addLayer(Jalan_Nasional);
         map.fitBounds(Jalan_Nasional.getBounds());
     });
     map.createPane("pane_Jalan_Nasional");
