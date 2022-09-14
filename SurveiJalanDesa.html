@@ -744,7 +744,7 @@ $.getJSON("Database/Spatial/jlnprovjatim.geojson", function (data) {
         },
         
         onEachFeature: function (feature, layer) {
-            var content = "Desa: " + feature.properties.NAMOBJ + "<br>" +
+            var content = "<b>Desa: </b>" + feature.properties.NAMOBJ + "<br>" +
                "<b> Kecamatan: </b> "+ feature.properties.WADMKC + "<br>" ;
 
             var contentTable = "<table>" +
