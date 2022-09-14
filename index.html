@@ -259,9 +259,14 @@
         onEachFeature: function (feature, layer) {
             var content = 
             "<font size=2><center><b>" + feature.properties.Nm_Ruas + "</b></center></font>" + "<br>" +
-            "<b>Nomor Urut: </b>" + "<br>" + feature.properties.No_Id + "<br>" +
+            "<b>Nomor ID: </b>" + "<br>" + feature.properties.No_Id + "<br>" +
             "<b>Nomor Ruas: </b>" + "<br>" + feature.properties.No_Ruas + "<br>" +
             "<b>Nama Ruas: </b>" +"<br>"+ feature.properties.Nm_Ruas + "<br>" + 
+            "<b>Kondisi Jalan: </b>" +"<br>"+
+            "<b>Baik: </b>" + feature.properties.Nm_Ruas +
+            "<b>Sedang: </b>" + feature.properties.Nm_Ruas +
+            "<b>Rusak Ringan: </b>" + feature.properties.Nm_Ruas +
+            "<b>Rusak Berat: </b>" + feature.properties.Nm_Ruas + "<br>" + 
             "<b>Panjang: </b>" + "<br>" + feature.properties.Panjang + " (Meter)" +"<br>" +
             "<b>Lebar: </b>" + "<br>" + feature.properties.Lebar + " (Meter)" +"<br>" +
             "<b>Titik Awal: </b>" + "<br>" + feature.properties.Tk_Aw + "<br>" +
@@ -290,7 +295,7 @@
                         mouseover: function (e) { //Fungsi mouse berada di atas obyek untuk highlight
                             var layer = e.target; //variabel layer
                             layer.setStyle({ //Highlight style
-                                weight: 6,  //Tebal garis
+                                weight: 7,  //Tebal garis
                                 color: "#DC143C", //Warna garis
                                 opacity: 1, //Transparansi garis
                            
