@@ -239,7 +239,7 @@
 
         /* Memanggil File GeoJSON Point 02*/ 
 var webgeoserver1 = L.geoJson(null, {
-            pointToLayer: function (feature, latlng) { 
+            pointToLayer: function (feature, latlng) {  
                 return L.marker(latlng, {
                     icon: L.icon({
                         iconUrl: "Database/Nonspatial/Icon/jbtberat.png", //URL icon marker 
@@ -273,7 +273,7 @@ var webgeoserver1 = L.geoJson(null, {
     }
 });
 
-$.getJSON("data/wfsgeoserver2.php", function (data) { 
+$.getJSON("webgeoserver1.php", function (data) { 
     webgeoserver1.addData(data); 
     map.addLayer(webgeoserver1); 
     map.fitBounds(webgeoserver1.getBounds());
