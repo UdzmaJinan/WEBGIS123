@@ -236,6 +236,50 @@
 
 
     // // /* Layer Marker */
+
+        /* Memanggil File GeoJSON Point 02*/ 
+var webgeoserver1 = L.geoJson(null, {
+            pointToLayer: function (feature, latlng) { 
+                return L.marker(latlng, {
+                    icon: L.icon({
+                        iconUrl: "Database/Nonspatial/Icon/jbtberat.png", //URL icon marker 
+                        iconSize: [32, 32], //ukuran icon marker
+                        iconAnchor: [16, 32], //icon marker offset
+                        popupAnchor: [0, -32], //popup offset
+                        tooltipAnchor: [16, -20] //tooltip offset
+                    })
+                });
+            },
+            onEachFeature: function (feature, layer) {
+        /* Variabel content untuk memanggil atribut dari data file geojson */ 
+        var content = "Nomor : " + feature.properties.kode + "<br>" +
+        "Nama Fasilitas : " + feature.properties.Nama_Jemba;
+
+
+        layer.on({
+            click: function (e) { //Fungsi ketika icon simbol di-klik 
+                wfsgeoserver2.bindPopup(content);
+            },
+            
+            mouseover: function(e) {
+                wfsgeoserver2.bindTooltip(feature.properties.kode);
+            },
+            
+            mouseout: function(e) { 
+                wfsgeoserver2.closePopup();
+            }
+        });
+    }
+});
+
+$.getJSON("data/wfsgeoserver2.php", function (data) { 
+    webgeoserver1.addData(data); 
+    map.addLayer(webgeoserver1); 
+    map.fitBounds(webgeoserver1.getBounds());
+});
+
+
+
     // /* Memanggil File GeoJSON Point 01*/
     $.getJSON("Database/Spatial/jem1.geojson", function (data) {
         Jembatan_Banyuwangi.addData(data);

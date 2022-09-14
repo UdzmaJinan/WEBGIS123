@@ -1,0 +1,1 @@
+http://localhost:8080/geoserver/jembatan/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=jembatan%3Asatu&maxFeatures=50&outputFormat=application%2Fjson
