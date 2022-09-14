@@ -252,21 +252,22 @@ var webgeoserver1 = L.geoJson(null, {
             },
             onEachFeature: function (feature, layer) {
         /* Variabel content untuk memanggil atribut dari data file geojson */ 
-        var content = "Nomor : " + feature.properties.kode + "<br>" +
+        var content = 
+        "Nomor : " + feature.properties.kode + "<br>" +
         "Nama Fasilitas : " + feature.properties.Nama_Jemba;
 
 
         layer.on({
             click: function (e) { //Fungsi ketika icon simbol di-klik 
-                wfsgeoserver2.bindPopup(content);
+                webgeoserver1.bindPopup(content);
             },
             
             mouseover: function(e) {
-                wfsgeoserver2.bindTooltip(feature.properties.kode);
+                webgeoserver1.bindTooltip(feature.properties.kode);
             },
             
             mouseout: function(e) { 
-                wfsgeoserver2.closePopup();
+                webgeoserver1.closePopup();
             }
         });
     }
