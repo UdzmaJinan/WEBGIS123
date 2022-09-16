@@ -461,7 +461,7 @@
 
 // JALAN PROVINSI
 
-$.getJSON("Database/Spatial/jalprov1.geojson", function (data) {
+$.getJSON("Database/Spatial/jlnprovjatim.geojson", function (data) {
         Jalan_Provinsi.addData(data);
         map.addLayer(Jalan_Provinsi);
         map.fitBounds(Jalan_Provinsi.getBounds());
