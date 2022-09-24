@@ -212,7 +212,7 @@
 
     L.control.Legend({ position: 'bottomleft' }).addTo(map); 
 
-    $.getJSON("Database/Spatial/jlnkab.geojson", function (data) {
+    $.getJSON("Database/Spatial/jlnkab24.geojson", function (data) {
         Jalan_Banyuwangi.addData(data);
         // map.addLayer(Jalan_Banyuwangi);
         map.fitBounds(Jalan_Banyuwangi.getBounds());
