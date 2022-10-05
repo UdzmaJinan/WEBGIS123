@@ -224,7 +224,7 @@
         style: function (feature) {
             if (feature.properties.Status === "Jalan Kabupaten" ) {
                 return {
-                    color: "#1C00FF", //Warna garis
+                    color: "#FF0000", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
@@ -527,228 +527,218 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
     /* GeoJSON Polygon Style 01*/
     var BatasAdmin_Banyuwangi = L.geoJson(null, {
         style: function (feature) {
-
-            if (feature.properties.WADMKK === "BANYUWANGI" ) {
+            if (feature.properties.WADMKC === "GLAGAH" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#1f78b4'
+           
+                }
+            }
+           else if (feature.properties.WADMKC === "BANYUWANGI" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#F0F8FF'
+                }
+            }
+            else if (feature.properties.WADMKC === "CLURING" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#FAEBD7'
+                }
+            }
+            else if (feature.properties.WADMKC === "GAMBIRAN" ) {
                 return {
                 opacity: 1,
                 color: 'black',
                 weight: 1,
                 dashArray: '3',
                 fillOpacity: 0.0, 
-                fillColor: '#1f78b4'
+                fillColor: '#transparent'
+                }
+            }
+            else if (feature.properties.WADMKC === "GENTENG" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#7FFFD4'
+                }
+            }
+            else if (feature.properties.WADMKC === "GIRI" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#F0FFFF'
+                }
+            }
+            else if (feature.properties.WADMKC === "GLENMORE" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#8A2BE2'
+                }
+            }
+            else if (feature.properties.WADMKC === "KABAT" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#F0FFF0'
+                }
+            }
+            else if (feature.properties.WADMKC === "KALIBARU" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#6495ED'
+                }
+            }
+            else if (feature.properties.WADMKC === "KALIPURO" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#FFF8DC'
+                }
+            }
+            else if (feature.properties.WADMKC === "MUNCAR" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#A9A9A9'
+                }
+            }
+            else if (feature.properties.WADMKC === "PESANGGARAN" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#008B8B'
+                }
+            }
+            else if (feature.properties.WADMKC === "PURWOHARJO" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#808000'
+                }
+            }
+            else if (feature.properties.WADMKC === "ROGOJAMPI" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#F5FFFA'
+                }
+            }
+            else if (feature.properties.WADMKC === "SEMPU" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#FFE4E1'
+                }
+            }
+            else if (feature.properties.WADMKC === "SINGOJURUH" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#00FA9A'
+                }
+            }
 
-        //     if (feature.properties.WADMKC === "GLAGAH" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#1f78b4'
-           
-        //         }
-        //     }
-        //    else if (feature.properties.WADMKC === "BANYUWANGI" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#F0F8FF'
-        //         }
-        //     }
-        //     else if (feature.properties.WADMKC === "CLURING" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#FAEBD7'
-        //         }
-        //     }
-        //     else if (feature.properties.WADMKC === "GAMBIRAN" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.0, 
-        //         fillColor: '#transparent'
-        //         }
-        //     }
-        //     else if (feature.properties.WADMKC === "GENTENG" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#7FFFD4'
-        //         }
-        //     }
-        //     else if (feature.properties.WADMKC === "GIRI" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#F0FFFF'
-        //         }
-        //     }
-        //     else if (feature.properties.WADMKC === "GLENMORE" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#8A2BE2'
-        //         }
-        //     }
-        //     else if (feature.properties.WADMKC === "KABAT" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#F0FFF0'
-        //         }
-        //     }
-        //     else if (feature.properties.WADMKC === "KALIBARU" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#6495ED'
-        //         }
-        //     }
-        //     else if (feature.properties.WADMKC === "KALIPURO" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#FFF8DC'
-        //         }
-        //     }
-        //     else if (feature.properties.WADMKC === "MUNCAR" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#A9A9A9'
-        //         }
-        //     }
-        //     else if (feature.properties.WADMKC === "PESANGGARAN" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#008B8B'
-        //         }
-        //     }
-        //     else if (feature.properties.WADMKC === "PURWOHARJO" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#808000'
-        //         }
-        //     }
-        //     else if (feature.properties.WADMKC === "ROGOJAMPI" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#F5FFFA'
-        //         }
-        //     }
-        //     else if (feature.properties.WADMKC === "SEMPU" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#FFE4E1'
-        //         }
-        //     }
-        //     else if (feature.properties.WADMKC === "SINGOJURUH" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#00FA9A'
-        //         }
-        //     }
-
-        //     else if (feature.properties.WADMKC === "SONGGON" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#EEE8AA'
-        //         }
-        //     }
-        //     else if (feature.properties.WADMKC === "SRONO" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#DB7093'
-        //         }
-        //     }
-        //     else if (feature.properties.WADMKC === "TEGALDLIMO" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#CD853F'
-        //         }
-        //     }
-        //     else if (feature.properties.WADMKC === "WONGSOREJO" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#FFC0CB'
-        //         }
-        //     }
-        //     else if (feature.properties.WADMKC === "BANGOREJO" ) {
-        //         return {
-        //         opacity: 1,
-        //         color: 'black',
-        //         weight: 1,
-        //         dashArray: '3',
-        //         fillOpacity: 0.7, 
-        //         fillColor: '#DDA0DD'
-        //         }
-        //     }
+            else if (feature.properties.WADMKC === "SONGGON" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#EEE8AA'
+                }
+            }
+            else if (feature.properties.WADMKC === "SRONO" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#DB7093'
+                }
+            }
+            else if (feature.properties.WADMKC === "TEGALDLIMO" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#CD853F'
+                }
+            }
+            else if (feature.properties.WADMKC === "WONGSOREJO" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#FFC0CB'
+                }
+            }
+            else if (feature.properties.WADMKC === "BANGOREJO" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#DDA0DD'
+                }
+            }
 
 
         },
