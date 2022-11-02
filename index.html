@@ -774,7 +774,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                         fillColor: "cyan", //Warna tengah polygon
                         fillOpacity: 0.7 //Transparansi polygon
                     });
-                    BatasAdmin_Sleman.bindTooltip("Kecamatan " + feature.properties.KECAMATAN, {sticky: true});
+                    BatasAdmin_Sleman.bindTooltip( feature.properties.KECAMATAN, {sticky: false});
                 },
                 mouseout: function (e) { //Fungsi mouse keluar dari obyek
                     BatasAdmin_Banyuwangi.resetStyle(e.target); //Mengembalikan style garis ke style awal
