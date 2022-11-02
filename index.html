@@ -538,7 +538,17 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
            
                 }
             }
-           else if (feature.properties.WADMKC === "BANYUWANGI" ) {
+            else if (feature.properties.WADMKC === "LICIN" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#8B008B'
+                }
+            }
+            else if (feature.properties.WADMKC === "BANYUWANGI" ) {
                 return {
                 opacity: 1,
                 color: 'black',
