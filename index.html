@@ -768,7 +768,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                     BatasAdmin_Sleman.bindTooltip("Desa " + feature.properties.Desa, {sticky: true});
                 },
                 mouseout: function (e) { //Fungsi mouse keluar dari obyek
-                    // BatasAdmin_Banyuwangi.resetStyle(e.target); //Mengembalikan style garis ke style awal
+                    BatasAdmin_Banyuwangi.resetStyle(e.target); //Mengembalikan style garis ke style awal
                     map.closePopup(); //Menutup popup
                 }
             });
