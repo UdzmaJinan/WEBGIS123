@@ -518,7 +518,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
             });
 
    /* memanggil data file geojson polygon 01 – Data Interval/Rasio */
-   $.getJSON("Database/Spatial/Admindesa.geojson", function (data) {
+   $.getJSON("Database/Spatial/Adminkec.geojson", function (data) {
         BatasAdmin_Banyuwangi.addData(data);
         // map.addLayer(BatasAdmin_Banyuwangi);
         map.fitBounds(BatasAdmin_Banyuwangi.getBounds());
@@ -527,7 +527,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
     /* GeoJSON Polygon Style 01*/
     var BatasAdmin_Banyuwangi = L.geoJson(null, {
         style: function (feature) {
-            if (feature.properties.WADMKC === "GLAGAH" ) {
+            if (feature.properties.KECAMATAN === "GLAGAH" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -538,7 +538,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
            
                 }
             }
-            else if (feature.properties.WADMKC === "LICIN" ) {
+            else if (feature.properties.KECAMATAN === "LICIN" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -548,7 +548,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#8B008B'
                 }
             }
-            else if (feature.properties.WADMKC === "BANYUWANGI" ) {
+            else if (feature.properties.KECAMATAN === "BANYUWANGI" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -558,7 +558,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#F0F8FF'
                 }
             }
-            else if (feature.properties.WADMKC === "CLURING" ) {
+            else if (feature.properties.KECAMATAN === "CLURING" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -568,7 +568,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#FAEBD7'
                 }
             }
-            else if (feature.properties.WADMKC === "GAMBIRAN" ) {
+            else if (feature.properties.KECAMATAN === "GAMBIRAN" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -578,7 +578,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#FFE4C4'
                 }
             }
-            else if (feature.properties.WADMKC === "GENTENG" ) {
+            else if (feature.properties.KECAMATAN === "GENTENG" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -588,7 +588,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#7FFFD4'
                 }
             }
-            else if (feature.properties.WADMKC === "GIRI" ) {
+            else if (feature.properties.KECAMATAN === "GIRI" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -598,7 +598,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#F0FFFF'
                 }
             }
-            else if (feature.properties.WADMKC === "GLENMORE" ) {
+            else if (feature.properties.KECAMATAN === "GLENMORE" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -608,7 +608,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#8A2BE2'
                 }
             }
-            else if (feature.properties.WADMKC === "KABAT" ) {
+            else if (feature.properties.KECAMATAN === "KABAT" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -618,7 +618,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#F0FFF0'
                 }
             }
-            else if (feature.properties.WADMKC === "KALIBARU" ) {
+            else if (feature.properties.KECAMATAN === "KALIBARU" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -628,7 +628,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#6495ED'
                 }
             }
-            else if (feature.properties.WADMKC === "KALIPURO" ) {
+            else if (feature.properties.KECAMATAN === "KALIPURO" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -638,7 +638,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#FFF8DC'
                 }
             }
-            else if (feature.properties.WADMKC === "MUNCAR" ) {
+            else if (feature.properties.KECAMATAN === "MUNCAR" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -648,7 +648,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#A9A9A9'
                 }
             }
-            else if (feature.properties.WADMKC === "PESANGGARAN" ) {
+            else if (feature.properties.KECAMATAN === "PESANGGARAN" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -658,7 +658,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#008B8B'
                 }
             }
-            else if (feature.properties.WADMKC === "PURWOHARJO" ) {
+            else if (feature.properties.KECAMATAN === "PURWOHARJO" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -668,7 +668,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#808000'
                 }
             }
-            else if (feature.properties.WADMKC === "ROGOJAMPI" ) {
+            else if (feature.properties.KECAMATAN === "ROGOJAMPI" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -678,7 +678,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#F5FFFA'
                 }
             }
-            else if (feature.properties.WADMKC === "SEMPU" ) {
+            else if (feature.properties.KECAMATAN === "SEMPU" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -688,7 +688,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#FFE4E1'
                 }
             }
-            else if (feature.properties.WADMKC === "SINGOJURUH" ) {
+            else if (feature.properties.KECAMATAN === "SINGOJURUH" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -699,7 +699,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 }
             }
 
-            else if (feature.properties.WADMKC === "SONGGON" ) {
+            else if (feature.properties.KECAMATAN === "SONGGON" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -709,7 +709,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#EEE8AA'
                 }
             }
-            else if (feature.properties.WADMKC === "SRONO" ) {
+            else if (feature.properties.KECAMATAN === "SRONO" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -719,7 +719,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#DB7093'
                 }
             }
-            else if (feature.properties.WADMKC === "TEGALDLIMO" ) {
+            else if (feature.properties.KECAMATAN === "TEGALDLIMO" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -729,7 +729,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#CD853F'
                 }
             }
-            else if (feature.properties.WADMKC === "WONGSOREJO" ) {
+            else if (feature.properties.KECAMATAN === "WONGSOREJO" ) {
                 return {
                 opacity: 1,
                 color: 'black',
@@ -739,7 +739,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#FFC0CB'
                 }
             }
-            else if (feature.properties.WADMKC === "BANGOREJO" ) {
+            else if (feature.properties.KECAMATAN === "BANGOREJO" ) {
                 return {
                 opacity: 1,
                 color: 'black',
