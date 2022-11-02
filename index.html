@@ -754,12 +754,11 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
         },
         
         onEachFeature: function (feature, layer) {
-            var content = "Desa: " + feature.properties.NAMOBJ + "<br>" +
-               "<b> Kecamatan: </b> "+ feature.properties.WADMKC + "<br>" ;
+            var content = 
+               "<b> Kecamatan: </b> "+ feature.properties.KECAMATAN + "<br>" ;
 
             var contentTable = "<table>" +
-                "<tr><th>Desa</th><td>" + feature.properties.NAMOBJ + "</td></tr>" +
-                "<tr><th>Kecamatan</th><td>" + feature.properties.WADMKC + "</td></tr>" +
+                "<tr><th>Kecamatan</th><td>" + feature.properties.KECAMATAN + "</td></tr>" +
                 "</table>";
 
             layer.on({
