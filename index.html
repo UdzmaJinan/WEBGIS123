@@ -316,14 +316,14 @@
     /* GeoJSON Polyline Style 01 – Data Nominal*/
     //pembuatan pane dan z.index digunakan untuk menyusun ordering layer agar tidak saling menutupi
     $.getJSON("Database/Spatial/kondisi_jln.geojson", function (data) {
-        Kondisi_Jalan.addData(data);
+        jln_glagah.addData(data);
         // map.addLayer(Kondisi_Jalan);
-        map.fitBounds(Kondisi_Jalan.getBounds());
+        map.fitBounds(jln_glagah.getBounds());
     });
-    map.createPane("pane_Kondisi_Jalan");
-    map.getPane("pane_Kondisi_Jalan").style.zIndex = 405;
+    map.createPane("pane_jln_glagah");
+    map.getPane("pane_jln_glagah").style.zIndex = 405;
 
-    var Kondisi_Jalan = L.geoJson(null, {
+    var jln_glagah = L.geoJson(null, {
         style: function (feature) {
             if (feature.properties.Kondisi === "BAIK" ) {
                 return {
@@ -802,7 +802,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
     };
 
     var overlayMaps = {
-        "Kondisi Jalan": Kondisi_Jalan,
+        "Kondisi Jalan Glagah": jln_glagah,
         "Jalan Kabupaten": Jalan_Banyuwangi,
         "Jalan Provinsi": Jalan_Provinsi,
         "Jalan Nasional": Jalan_Nasional,
