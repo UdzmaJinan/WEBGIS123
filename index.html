@@ -752,7 +752,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
 
 
         },
-        
+
         onEachFeature: function (feature, layer) {
             var content = 
                "<b> Kecamatan: </b> "+ feature.properties.KECAMATAN + "<br>" ;
@@ -763,7 +763,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
 
             layer.on({
                 click: function (e) { //Fungsi ketika obyek diklik
-                    BatasAdmin_Banyuwangi.bindPopup(content);
+                    BatasAdmin_Banyuwangi.bindPopup(content)
                 },
                 mouseover: function (e) { //Fungsi mouse berada di atas obyek untuk highlight
                     var layer = e.target; //variabel layer
@@ -774,7 +774,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                         fillColor: "cyan", //Warna tengah polygon
                         fillOpacity: 0.7 //Transparansi polygon
                     });
-                    BatasAdmin_Sleman.bindTooltip( feature.properties.KECAMATAN, {permanent: false, direction:"center"});
+                    BatasAdmin_Banyuwangi.bindTooltip( feature.properties.KECAMATAN, {permanent: false, direction:"center"});
                 },
                 mouseout: function (e) { //Fungsi mouse keluar dari obyek
                     BatasAdmin_Banyuwangi.resetStyle(e.target); //Mengembalikan style garis ke style awal
