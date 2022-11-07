@@ -764,21 +764,23 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
             layer.on({
                 click: function (e) { //Fungsi ketika obyek diklik
                     BatasAdmin_Banyuwangi.bindPopup(content)
+                    
                 },
                 mouseover: function (e) { //Fungsi mouse berada di atas obyek untuk highlight
                     var layer = e.target; //variabel layer
                     layer.setStyle({ //Highlight style
                         color: "grey", //Warna garis tepi polygon
-                        weight: 0.2, //Tebal garis tepi polygon
+                        weight: 0.5, //Tebal garis tepi polygon
                         opacity: 1, //Transparansi garis tepi polygon
                         fillColor: "cyan", //Warna tengah polygon
                         fillOpacity: 0.7 //Transparansi polygon
                     });
-                    BatasAdmin_Banyuwangi.bindTooltip(feature.properties.KECAMATAN, {permanent: true, direction:"center"});
+                    BatasAdmin_Banyuwangi.bindTooltip(feature.properties.KECAMATAN, {permanent: false, direction:"center"});
                 },
                 mouseout: function (e) { //Fungsi mouse keluar dari obyek
                     BatasAdmin_Banyuwangi.resetStyle(e.target); //Mengembalikan style garis ke style awal
                     map.closePopup(); //Menutup popup
+                    
                 }
             });
         }
