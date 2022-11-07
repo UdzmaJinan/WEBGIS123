@@ -770,9 +770,9 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                     var layer = e.target; //variabel layer
                     layer.setStyle({ //Highlight style
                         color: "grey", //Warna garis tepi polygon
-                        weight: 0.5, //Tebal garis tepi polygon
+                        weight: 0.2, //Tebal garis tepi polygon
                         opacity: 1, //Transparansi garis tepi polygon
-                        fillColor: "cyan", //Warna tengah polygon
+                        fillColor: "black", //Warna tengah polygon
                         fillOpacity: 0.7 //Transparansi polygon
                     });
                     BatasAdmin_Banyuwangi.bindTooltip(feature.properties.KECAMATAN, {permanent: false, direction:"center"});
