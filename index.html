@@ -777,7 +777,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                     BatasAdmin_Sleman.bindTooltip( feature.properties.KECAMATAN, {permanent: false, direction:"center"});
                 },
                 mouseout: function (e) { //Fungsi mouse keluar dari obyek
-                    // BatasAdmin_Banyuwangi.resetStyle(e.target); //Mengembalikan style garis ke style awal
+                    BatasAdmin_Banyuwangi.resetStyle(e.target); //Mengembalikan style garis ke style awal
                     map.closePopup(); //Menutup popup
                 }
             });
