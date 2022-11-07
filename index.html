@@ -226,7 +226,7 @@
         style: function (feature) {
             if (feature.properties.Status === "Jalan Kabupaten" ) {
                 return {
-                    color: "#00FFFF", //Warna garis
+                    color: "#FF3FD5", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
@@ -766,7 +766,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
             layer.on({
                 click: function (e) { //Fungsi ketika obyek diklik
                     BatasAdmin_Banyuwangi.bindPopup(content)
-                    
+
                 },
                 mouseover: function (e) { //Fungsi mouse berada di atas obyek untuk highlight
                     var layer = e.target; //variabel layer
@@ -777,11 +777,12 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                         fillColor: "black", //Warna tengah polygon
                         fillOpacity: 0.7 //Transparansi polygon
                     });
-                    BatasAdmin_Banyuwangi.bindTooltip(feature.properties.KECAMATAN, {
+                    BatasAdmin_Banyuwangi.bindTooltip(feature.properties.KECAMATAN), {
                         permanent: false, 
-                        direction:"center",
- 
+                        direction:"center"}
                 },
+
+                                    
                 mouseout: function (e) { //Fungsi mouse keluar dari obyek
                     BatasAdmin_Banyuwangi.resetStyle(e.target); //Mengembalikan style garis ke style awal
                     map.closePopup(); //Menutup popup
