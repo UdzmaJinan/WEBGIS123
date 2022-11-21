@@ -1496,14 +1496,14 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 mouseover: function (e) { //Fungsi mouse berada di atas obyek untuk highlight
                     var layer = e.target; //variabel layer
                     layer.setStyle({ //Highlight style
-                        color: "grey", //Warna garis tepi polygon
-                        weight: 0.2, //Tebal garis tepi polygon
+                        color: "black", //Warna garis tepi polygon
+                        weight: 0.5, //Tebal garis tepi polygon
                         opacity: 1, //Transparansi garis tepi polygon
-                        fillColor: "black", //Warna tengah polygon
-                        fillOpacity: 0.7 //Transparansi polygon
+                        fillColor: "transparan", //Warna tengah polygon
+                        fillOpacity: 0.1 //Transparansi polygon
                     });
                     BatasAdmin_Banyuwangi.bindTooltip(feature.properties.KECAMATAN), {
-                        permanent: false, 
+                        permanent: true, 
                         direction:"center"}
                 },
 
