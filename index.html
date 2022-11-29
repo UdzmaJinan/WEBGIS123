@@ -1247,7 +1247,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
    /* memanggil data file geojson polygon 01 – Data Interval/Rasio */
    $.getJSON("Database/Spatial/Adminkec.geojson", function (data) {
         BatasAdmin_Banyuwangi.addData(data);
-        map.addLayer(BatasAdmin_Banyuwangi);
+        // map.addLayer(BatasAdmin_Banyuwangi);
         map.fitBounds(BatasAdmin_Banyuwangi.getBounds());
     });
 
