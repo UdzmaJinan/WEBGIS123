@@ -2484,7 +2484,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 color: 'black',
                 weight: 1,
                 dashArray: '3',
-                fillOpacity: 0.0, 
+                fillOpacity: 0.7, 
                 fillColor: '#FFE4C4'
                 }
             }
@@ -2659,7 +2659,26 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
                 fillColor: '#DDA0DD'
                 }
             }
-
+            else if (feature.properties.KECAMATAN === "SILIRAGUNG" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#A52A2A'
+                }
+            }
+            else if (feature.properties.KECAMATAN === "BLIMBINGSARI" ) {
+                return {
+                opacity: 1,
+                color: 'black',
+                weight: 1,
+                dashArray: '3',
+                fillOpacity: 0.7, 
+                fillColor: '#7FFF00'
+                }
+            }
 
         },
 
