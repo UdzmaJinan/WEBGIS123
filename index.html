@@ -2122,9 +2122,99 @@ $.getJSON("Database/Spatial/jln_cluring.geojson", function (data) {
             });
 
 
+//KONDISI JALAN PESANGGARAN
+            $.getJSON("Database/Spatial/jln_pesanggaran.geojson", function (data) {
+    jln_pesanggaran.addData(data);
+        // map.addLayer(jln_pesanggaran);
+        map.fitBounds(jln_pesanggaran.getBounds());
+    });
+    map.createPane("pane_jln_pesanggaran");
+    map.getPane("pane_jln_pesanggaran").style.zIndex = 405;
+
+    var jln_pesanggaran = L.geoJson(null, {
+        style: function (feature) {
+            if (feature.properties.Kondisi === "BAIK" ) {
+                return {
+                    color: "#008000", //Warna garis
+                    dashArray: '',
+                    weight: 3, //Tebal garis
+                    opacity: 1, //Transparansi garis
+                }
+            }
+            else if (feature.properties.Kondisi === "SEDANG" ) {
+                return {
+                    color: "#FFFF00", //Warna garis
+                    dashArray: '',
+                    weight: 3, //Tebal garis
+                    opacity: 1, //Transparansi garis
+                }
+            }
+            else if (feature.properties.Kondisi === "RUSAK RINGAN" ) {
+                return {
+                    color: "#FFA500", //Warna garis
+                    dashArray: '',
+                    weight: 3, //Tebal garis
+                    opacity: 1, //Transparansi garis
+                }
+            }
+            else if (feature.properties.Kondisi === "RUSAK BERAT" ) {
+                return {
+                    color: "#FF0000", //Warna garis
+                    dashArray: '',
+                    weight: 3, //Tebal garis
+                    opacity: 1, //Transparansi garis
+                }
+            }
+
+        },
+
+        onEachFeature: function (feature, layer) {
+            var content = 
+            "<font size=2><center><b>" + feature.properties.Nm_Ruas + "</b></center></font>" + "<br>" +
+            "<b>Nomor: </b>" + "<br>" + feature.properties.No_Ruas + "<br>" +
+            "<b>Nama: </b>" +"<br>"+ feature.properties.Nm_Ruas + "<br>" + 
+            "<b>Kondisi: </b>" +"<br>"+ feature.properties.Kondisi + "<br>" + 
+            "<b>Desa: </b>" + "<br>" + feature.properties.Desa_Kel + "<br>" +
+            "<b>STA </b>" + "<br>" + feature.properties.STA + "<br>" +
+            "<b>Kecamatan: </b>" + "<br>" + feature.properties.Kecamatan + "<br>" +
+            "<b>Kabupaten: </b>" + "<br>" + feature.properties.Kab_Kot + "<br>";
+            // "<b>Foto: </b>" + "<br>" + "<img src='Database/Nonspatial/Foto/" + feature.properties.Foto + "' width='320'>";
+            
+            var contentTable = 
+            "<table>" + 
+            "<tr><th>Nomor Ruas</th><td>" + feature.properties.No_Ruas + "</td></tr>" +
+            "<tr><th>Nama</th><td>" + feature.properties.Nm_Ruas + "</td></tr>" +
+            "<tr><th>Status Jalan</th><td>" + feature.properties.Status + "</td></tr>" +
+            "<tr><th>STA</th><td>" + feature.properties.STA + "</td></tr>" +
+            "<tr><th>Titik Akhir</th><td>" + feature.properties.Tk_Ruas_Ak + "</td></tr>" +
+            "<tr><th>Foto</th><td>" + feature.properties.Foto + "</td></tr>" +
+            "</table>"; 
+
+                layer.on({
+                    click: function (e) { //Fungsi ketika obyek diklik
+                        jln_pesanggaran.bindPopup(content);
+                        },
+                        mouseover: function (e) { //Fungsi mouse berada di atas obyek untuk highlight
+                            var layer = e.target; //variabel layer
+                            layer.setStyle({ //Highlight style
+                                weight: 6,  //Tebal garis
+                                color: "#DC143C", //Warna garis
+                                opacity: 1, //Transparansi garis
+                            });
+                            jln_pesanggaran.bindTooltip("Jalan " + feature.properties.Nm_Ruas, {sticky: true});
+                        },
+                        mouseout: function (e) { //Fungsi mouse keluar dari obyek
+                            jln_pesanggaran.resetStyle(e.target); //Mengembalikan style garis ke style awal
+                            // map.closePopup(); //Menutup popup
+                        }
+                    });
+                },
+                pane: "pane_jln_pesanggaran"
+            });
+
 //KONDISI JALAN MUNCAR
-        $.getJSON("Database/Spatial/jln_muncar.geojson", function (data) {
-        jln_muncar.addData(data);
+$.getJSON("Database/Spatial/jln_muncar.geojson", function (data) {
+    jln_muncar.addData(data);
         // map.addLayer(jln_muncar);
         map.fitBounds(jln_muncar.getBounds());
     });
@@ -2211,6 +2301,8 @@ $.getJSON("Database/Spatial/jln_cluring.geojson", function (data) {
                 },
                 pane: "pane_jln_muncar"
             });
+
+
 // JALAN NASIONAL
 
     $.getJSON("Database/Spatial/jalnas.geojson", function (data) {
@@ -2634,9 +2726,8 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
         "Kondisi Jalan Tegaldlimo" : jln_tegaldlimo,
         "Kondisi Jalan Tegalsari" : jln_tegalsari,
         "Kondisi Jalan Wongsorejo" : jln_wongsorejo,
-        "Kondisi Jalan Cluring" : jln_cluring,
         "Kondisi Jalan Muncar" : jln_muncar,
-   
+        "Kondisi Jalan Cluring" : jln_cluring,
 
     };    
 
