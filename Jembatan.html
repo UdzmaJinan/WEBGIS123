@@ -76,6 +76,8 @@
     </div>
 
 <!-- <div id="map"></div> -->
+
+
 </body>
         <style>
              /* Background pada Judul */
@@ -106,7 +108,9 @@
         </style>
         <title></title>
     </head>
+
     <body>
+        
         
         <div id="map">
         </div>
@@ -126,6 +130,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
         
         <script>
+    
         var highlightLayer;
         function highlightFeature(e) {
             highlightLayer = e.target;
@@ -146,6 +151,8 @@
             zoomControl:true, maxZoom:28, minZoom:1
         })
 
+
+        
         /* Tile Basemap */ //(note: pilihan basemap diakses pada https://leaflet-extras.github.io/leaflet-providers/preview/)
 var basemap1 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> | <a href="SITEMAN" target="_blank">SITEMAN</a>' //menambahkan nama//
@@ -170,7 +177,6 @@ var basemap1 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 	});
     basemap4.addTo(map);
-
 
 
         var hash = new L.Hash(map);
@@ -206,6 +212,11 @@ var basemap1 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
+
+
+
+
+    
 
         function style_adminkec_0_0(feature) {
             switch(String(feature.properties['KECAMATAN'])) {
@@ -728,6 +739,10 @@ var basemap1 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
+
+
+        
+
         function style_JEMBATAN_KAB_BANYUWANGI_1_0(feature) {
             switch(String(feature.properties['KONDISI_RA'])) {
                 case 'BAIK':
@@ -840,6 +855,30 @@ var basemap1 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             propertyName: 'NAMA_JEMBA'}));
         document.getElementsByClassName('search-button')[0].className +=
          ' fa fa-search';
+  /* Image Legend */
+  L.Control.Legend = L.Control.extend({
+        onAdd: function(map) {
+            var img = L.DomUtil.create('img');
+            img.src = 'Database/Nonspatial/Icon/legen.png';
+            img.style.width = '500px';
+            return img;
+        }
+    });
+
+    L.control.Legend = function(opts) {
+        return new L.Control.Legend(opts);
+    }
+
+    L.control.Legend({ position: 'bottomleft' }).addTo(map); 
+
+    $.getJSON("Database/Spatial/jlnkab24.geojson", function (data) {
+        Jalan_Banyuwangi.addData(data);
+        // map.addLayer(Jalan_Banyuwangi);
+        map.fitBounds(Jalan_Banyuwangi.getBounds());
+    });
+    map.createPane("pane_Jalan_Banyuwangi");
+    map.getPane("pane_Jalan_Banyuwangi").style.zIndex = 405;
+
         </script>
     </body>
 </html>
