@@ -38,7 +38,8 @@
                   <b>KONDISI JALAN</b>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="index.html">PETA</a></li>
+                  <li><a class="dropdown-item" href="index.html">JALAN KABUPATEN</a></li>
+                  <li><a class="dropdown-item" href="jalandesa.html">JALAN DESA</a></li>
                   <li><a class="dropdown-item" href="#">DATA</a></li>
                 </ul>
               </li>
@@ -53,15 +54,6 @@
                 </ul>
               </li>
               
-              <li class="nav-item mx-2 dropdown">
-                <a class="nav-link dropdown-toggle" href="JALAN DESA" role="navbarbutton" data-bs-toggle="dropdown" aria-expanded="false">
-                <b>JALAN DESA</b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="jalandesa.html">PETA</a></li>
-                  <li><a class="dropdown-item" href="#">DATA</a></li>
-                </ul>
-              </li>
     
           </div>
           <ul class="navbar-nav me-auto">
@@ -728,7 +720,7 @@ var basemap1 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                         <td colspan="2"><strong>SARAN PENANGANAN</strong><br />' + (feature.properties['SARAN_PENA'] !== null ? autolinker.link(feature.properties['SARAN_PENA'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2"><strong>Foto</strong><br />' + (feature.properties['FOTO'] !== null ? '<img src="images/'+ String(feature.properties['FOTO']  ) .replace(/[\\\/:]/g, '_').trim() + '">' : '') + '</td>\
+                        <td colspan="2"><strong>Foto</strong><br/>'+ (feature.properties['FOTO'] !== null ? '<img src="images/' + String(feature.properties['FOTO'])  .replace(/[\\\/:]/g, '_').trim() +  '" >' : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
