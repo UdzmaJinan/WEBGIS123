@@ -204,7 +204,7 @@
     L.Control.Legend = L.Control.extend({
         onAdd: function(map) {
             var img = L.DomUtil.create('img');
-            img.src = 'Database/Nonspatial/Icon/lege.png';
+            img.src = 'Database/Nonspatial/Icon/leg.png';
             img.style.width = '650px';
             return img;
         }
@@ -2646,7 +2646,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
         style: function (feature) {
             if (feature.properties.status === "Provinsi" ) {
                 return {
-                    color: "#8B4513", //Warna garis
+                    color: "#00FFFF", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
