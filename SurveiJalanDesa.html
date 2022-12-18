@@ -418,15 +418,15 @@ $.getJSON("Database/Spatial/jbangorejo.geojson", function (data) {
             });
 
 // BANYUWANGI
-$.getJSON("Database/Spatial/jbanyuwangi.geojson", function (data) {
-    Jalan_Banyuwangi.addData(data);
-        // map.addLayer(Jalan_Banyuwangi);
-        map.fitBounds(Jalan_Banyuwangi.getBounds());
+$.getJSON("Database/Spatial/jbanyuwang.geojson", function (data) {
+    J_Banyuwangi.addData(data);
+        // map.addLayer(J_Banyuwangi);
+        map.fitBounds(J_Banyuwangi.getBounds());
     });
-    map.createPane("pane_Jalan_Banyuwangi");
-    map.getPane("pane_Jalan_Banyuwangi").style.zIndex = 405;
+    map.createPane("pane_J_Banyuwangi");
+    map.getPane("pane_J_Banyuwangi").style.zIndex = 405;
 
-    var Jalan_Bangorejo = L.geoJson(null, {
+    var J_Banyuwangi = L.geoJson(null, {
         style: function (feature) {
             if (feature.properties.Status === "Jalan Kabupaten" ) {
                 return {
@@ -496,7 +496,7 @@ $.getJSON("Database/Spatial/jbanyuwangi.geojson", function (data) {
 
                 layer.on({
                     click: function (e) { //Fungsi ketika obyek diklik
-                        Jalan_Banyuwangi.bindPopup(content, {maxHeight: 300} );
+                        J_Banyuwangi.bindPopup(content, {maxHeight: 300} );
                         },
                         mouseover: function (e) { //Fungsi mouse berada di atas obyek untuk highlight
                             var layer = e.target; //variabel layer
@@ -506,20 +506,20 @@ $.getJSON("Database/Spatial/jbanyuwangi.geojson", function (data) {
                                 opacity: 1, //Transparansi garis
                            
                             });
-                            Jalan_Banyuwangi.bindPopup(content, {maxHeight: 400})
-                          Jalan_Banyuwangi.bindTooltip("Jalan " + feature.properties.Nm_Ruas, {sticky: true});
+                            J_Banyuwangi.bindPopup(content, {maxHeight: 400})
+                          J_Banyuwangi.bindTooltip("Jalan " + feature.properties.Nm_Ruas, {sticky: true});
                         },
                         mouseout: function (e) { //Fungsi mouse keluar dari obyek
-                            Jalan_Banyuwangi.resetStyle(e.target); //Mengembalikan style garis ke style awal
+                            J_Banyuwangi.resetStyle(e.target); //Mengembalikan style garis ke style awal
                             // map.closePopup(); //Menutup popup
                         }
                     });
                 },
-                pane: "pane_Jalan_Banyuwangi"
+                pane: "pane_J_Banyuwangi"
             });
 
 // BLIMBINGSARI
-$.getJSON("Database/Spatial/jblimbingsari.geojson", function (data) {
+$.getJSON("Database/Spatial/jblimbingsar.geojson", function (data) {
     Jalan_Blimbingsari.addData(data);
     // map.addLayer(Jalan_Blimbingsari);
     map.fitBounds(Jalan_Blimbingsari.getBounds());
@@ -2756,8 +2756,8 @@ $.getJSON("Database/Spatial/jwongsorejo.geojson", function (data) {
         // map.addLayer(Jalan_Wongsorejo);
         map.fitBounds(Jalan_Wongsorejo.getBounds());
     });
-    map.createPane("pane_Jalan_Rogojampi");
-    map.getPane("pane_Jalan_Rogojampi").style.zIndex = 405;
+    map.createPane("pane_Jalan_Wongsorejo");
+    map.getPane("pane_Jalan_Wongsorejo").style.zIndex = 405;
 
     var Jalan_Wongsorejo = L.geoJson(null, {
         style: function (feature) {
@@ -3286,7 +3286,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
         "Jalan Glagah": Jalan_Glagah,
         "Jalan Kalipuro": Jalan_Kalipuro,
         "Jalan Bangorejo": Jalan_Bangorejo,
-        "Jalan Banyuwangi": Jalan_Banyuwangi,
+        "Jalan Banyuwangi": J_Banyuwangi,
         "Jalan Blimbingsari": Jalan_Blimbingsari,
         "Jalan Giri": Jalan_Giri,
         "Jalan Licin": Jalan_Licin,
@@ -3304,7 +3304,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
         "Jalan Tegalsari" : Jalan_Tegalsari,
         "Jalan Wongsorejo" : Jalan_Wongsorejo,
         "Jalan Muncar" : Jalan_Muncar,
-        "Jalan Cluring" : Jalan_Muncar,
+        "Jalan Cluring" : Jalan_Cluring,
         "Jalan Kabat" : Jalan_Kabat,
         "Jalan Sempu" : Jalan_Sempu,
         "Jalan Srono" : Jalan_Srono,
