@@ -318,15 +318,15 @@
 
 // JALAN DESA
   
-$.getJSON("Database/Spatial/jln_ds.geojson", function (data) {
-     jln_ds.addData(data);
-        map.addLayer(jln_ds);
-        map.fitBounds(jln_ds.getBounds());
+$.getJSON("Database/Spatial/jln_ds1.geojson", function (data) {
+     jln_ds1.addData(data);
+        map.addLayer(jln_ds1);
+        map.fitBounds(jln_ds1.getBounds());
     });
-    map.createPane("pane_jln_ds");
-    map.getPane("pane_jln_ds").style.zIndex = 405;
+    map.createPane("pane_jln_ds1");
+    map.getPane("pane_jln_ds1").style.zIndex = 405;
 
-    var jln_ds = L.geoJson(null, {
+    var jln_ds1 = L.geoJson(null, {
         style: function (feature) {
             if (feature.properties.Status === "Jalan Kabupaten" ) {
                 return {
@@ -396,7 +396,7 @@ $.getJSON("Database/Spatial/jln_ds.geojson", function (data) {
 
                 layer.on({
                     click: function (e) { //Fungsi ketika obyek diklik
-                        jln_ds.bindPopup(content, {maxHeight: 300} );
+                        jln_ds1.bindPopup(content, {maxHeight: 300} );
                         },
                         mouseover: function (e) { //Fungsi mouse berada di atas obyek untuk highlight
                             var layer = e.target; //variabel layer
@@ -406,16 +406,16 @@ $.getJSON("Database/Spatial/jln_ds.geojson", function (data) {
                                 opacity: 1, //Transparansi garis
                            
                             });
-                            jln_ds.bindPopup(content, {maxHeight: 400})
-                          jln_ds.bindTooltip("Jalan " + feature.properties.NAME, {sticky: true});
+                            jln_ds1.bindPopup(content, {maxHeight: 400})
+                          jln_ds1.bindTooltip( feature.properties.NAME, {sticky: true});
                         },
                         mouseout: function (e) { //Fungsi mouse keluar dari obyek
-                            jln_ds.resetStyle(e.target); //Mengembalikan style garis ke style awal
+                            jln_ds1.resetStyle(e.target); //Mengembalikan style garis ke style awal
                             // map.closePopup(); //Menutup popup
                         }
                     });
                 },
-                pane: "pane_jln_ds"
+                pane: "pane_jln_ds1"
             });
 
 
@@ -434,41 +434,33 @@ $.getJSON("Database/Spatial/jln_ds.geojson", function (data) {
 
     var jlnds_gambiran = L.geoJson(null, {
         style: function (feature) {
-            if (feature.properties.Kondisi === "BAIK" ) {
+            if (feature.properties.Status === "Jalan Kabupaten" ) {
                 return {
-                    color: "#008000", //Warna garis
+                    color: "#FF3FD5", //Warna garis
+                    dashArray: '',
+                    weight: 5, //Tebal garis
+                    opacity: 1, //Transparansi garis
+                }
+            }
+            else if (feature.properties.Status === "Jalan Lokal" ) {
+                return {
+                    color: "#00BBBB", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
                 }
             }
-            else if (feature.properties.Kondisi === "SEDANG" ) {
+            else if (feature.properties.Status === "Jalan Desa" ) {
                 return {
-                    color: "#FFFF00", //Warna garis
+                    color: "#006666", //Warna garis
                     dashArray: '',
-                    weight: 3, //Tebal garis
+                    weight: 5, //Tebal garis
                     opacity: 1, //Transparansi garis
                 }
             }
-            else if (feature.properties.Kondisi === "RUSAK RINGAN" ) {
+            else if (feature.properties.Status === "Jalan Perekonomian" ) {
                 return {
-                    color: "#FFA500", //Warna garis
-                    dashArray: '',
-                    weight: 3, //Tebal garis
-                    opacity: 1, //Transparansi garis
-                }
-            }
-            else if (feature.properties.Kondisi === "RUSAK BERAT" ) {
-                return {
-                    color: "#FF0000", //Warna garis
-                    dashArray: '',
-                    weight: 3, //Tebal garis
-                    opacity: 1, //Transparansi garis
-                }
-            }
-            else if (feature.properties.Kondisi === "TIDAK TERDEFINISI" ) {
-                return {
-                    color: "#8B4513", //Warna garis
+                    color: "#888800", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
@@ -479,37 +471,50 @@ $.getJSON("Database/Spatial/jln_ds.geojson", function (data) {
         onEachFeature: function (feature, layer) {
             var content = 
             "<font size=2><center><b>" + feature.properties.NAME + "</b></center></font>" + "<br>" +
-            "<b>Nomor: </b>" + "<br>" + feature.properties.No_Ruas + "<br>" +
-            "<b>Nama: </b>" +"<br>"+ feature.properties.NAME + "<br>" + 
-            "<b>Kondisi: </b>" +"<br>"+ feature.properties.Kondisi + "<br>" + 
+            "<b>Nomor ID: </b>" + "<br>" + feature.properties.No_Id + "<br>" +
+            "<b>Nomor Ruas: </b>" + "<br>" + feature.properties.No_Ruas + "<br>" +
+            "<b>Nama Ruas: </b>" +"<br>"+ feature.properties.NAME + "<br>" + 
+            "<b>Kondisi Jalan: </b>" +"<br>"+
+            "<b>Baik: </b>" + feature.properties.Baik +
+            "<b> Sedang: </b>" + feature.properties.Sedang + "<br>"+
+            "<b>Rusak Ringan: </b>" + feature.properties.Rr +
+            "<b> Rusak Berat: </b>" + feature.properties.Rb + "<br>" + 
+            "<b>Panjang: </b>" + "<br>" + feature.properties.Panjang + " (Meter)" +"<br>" +
+            "<b>Lebar: </b>" + "<br>" + feature.properties.Lebar + " (Meter)" +"<br>" +
+            "<b>Titik Awal: </b>" + "<br>" + feature.properties.Tk_Aw + "<br>" +
+            "<b>Titik Akhir: </b>" + "<br>" + feature.properties.Tk_Ak + "<br>" +
+            "<b>Status Jalan: </b>" + "<br>" + feature.properties.Status + "<br>" +
             "<b>Desa: </b>" + "<br>" + feature.properties.Desa + "<br>" +
-            "<b>STA </b>" + "<br>" + feature.properties.STA + "<br>" +
             "<b>Kecamatan: </b>" + "<br>" + feature.properties.Kecamatan + "<br>" +
-            "<b>Kabupaten: </b>" + "<br>" + feature.properties.Kab_Kot + "<br>";
-            // "<b>Foto: </b>" + "<br>" + "<img src='Database/Nonspatial/Foto/" + feature.properties.Foto + "' width='320'>";
+            "<b>Kebupaten: </b>" + "<br>" + feature.properties.Kab_Kot + "<br>" +
+            "<b>Foto: </b>" + "<br>" + "<img src='Database/Nonspatial/Foto/" + feature.properties.Foto + "' width='300'>"
+            ;
             
             var contentTable = 
             "<table>" + 
             "<tr><th>Nomor Ruas</th><td>" + feature.properties.No_Ruas + "</td></tr>" +
-            "<tr><th>Nama</th><td>" + feature.properties.NAME + "</td></tr>" +
-            "<tr><th>Status Jalan</th><td>" + feature.properties.Status + "</td></tr>" +
-            "<tr><th>STA</th><td>" + feature.properties.STA + "</td></tr>" +
+            "<tr><th>Nama</th><td>" + feature.properties.Nm_Ruas + "</td></tr>" +
+            "<tr><th>Panjang</th><td>" + feature.properties.Panjang + "</td></tr>" +
+            "<tr><th>Titik Awal</th><td>" + feature.properties.Tk_Ruas_Aw + "</td></tr>" +
             "<tr><th>Titik Akhir</th><td>" + feature.properties.Tk_Ruas_Ak + "</td></tr>" +
             "<tr><th>Foto</th><td>" + feature.properties.Foto + "</td></tr>" +
             "</table>"; 
 
-                layer.on({
+
+            layer.on({
                     click: function (e) { //Fungsi ketika obyek diklik
-                        jlnds_gambiran.bindPopup(content);
+                        jlnds_gambiran.bindPopup(content, {maxHeight: 300} );
                         },
                         mouseover: function (e) { //Fungsi mouse berada di atas obyek untuk highlight
                             var layer = e.target; //variabel layer
                             layer.setStyle({ //Highlight style
-                                weight: 6,  //Tebal garis
+                                weight: 10,  //Tebal garis
                                 color: "#DC143C", //Warna garis
                                 opacity: 1, //Transparansi garis
+                           
                             });
-                            jlnds_gambiran.bindTooltip("Jalan " + feature.properties.NAME, {sticky: true});
+                            jlnds_gambiran.bindPopup(content, {maxHeight: 400})
+                            jlnds_gambiran.bindTooltip( feature.properties.NAME, {sticky: true});
                         },
                         mouseout: function (e) { //Fungsi mouse keluar dari obyek
                             jlnds_gambiran.resetStyle(e.target); //Mengembalikan style garis ke style awal
@@ -529,43 +534,35 @@ $.getJSON("Database/Spatial/jlnds_ganteng.geojson", function (data) {
     map.createPane("pane_jlnds_ganteng");
     map.getPane("pane_jlnds_ganteng").style.zIndex = 405;
 
-    var jlnds_ganteng = L.geoJson(null, {
+    var jlnds_gambiran = L.geoJson(null, {
         style: function (feature) {
-            if (feature.properties.Kondisi === "BAIK" ) {
+            if (feature.properties.Status === "Jalan Kabupaten" ) {
                 return {
-                    color: "#008000", //Warna garis
+                    color: "#FF3FD5", //Warna garis
+                    dashArray: '',
+                    weight: 5, //Tebal garis
+                    opacity: 1, //Transparansi garis
+                }
+            }
+            else if (feature.properties.Status === "Jalan Lokal" ) {
+                return {
+                    color: "#00BBBB", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
                 }
             }
-            else if (feature.properties.Kondisi === "SEDANG" ) {
+            else if (feature.properties.Status === "Jalan Desa" ) {
                 return {
-                    color: "#FFFF00", //Warna garis
+                    color: "#006666", //Warna garis
                     dashArray: '',
-                    weight: 3, //Tebal garis
+                    weight: 5, //Tebal garis
                     opacity: 1, //Transparansi garis
                 }
             }
-            else if (feature.properties.Kondisi === "RUSAK RINGAN" ) {
+            else if (feature.properties.Status === "Jalan Perekonomian" ) {
                 return {
-                    color: "#FFA500", //Warna garis
-                    dashArray: '',
-                    weight: 3, //Tebal garis
-                    opacity: 1, //Transparansi garis
-                }
-            }
-            else if (feature.properties.Kondisi === "RUSAK BERAT" ) {
-                return {
-                    color: "#FF0000", //Warna garis
-                    dashArray: '',
-                    weight: 3, //Tebal garis
-                    opacity: 1, //Transparansi garis
-                }
-            }
-            else if (feature.properties.Kondisi === "TIDAK TERDEFINISI" ) {
-                return {
-                    color: "#8B4513", //Warna garis
+                    color: "#888800", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
@@ -576,24 +573,35 @@ $.getJSON("Database/Spatial/jlnds_ganteng.geojson", function (data) {
         onEachFeature: function (feature, layer) {
             var content = 
             "<font size=2><center><b>" + feature.properties.NAME + "</b></center></font>" + "<br>" +
-            "<b>Nomor: </b>" + "<br>" + feature.properties.No_Ruas + "<br>" +
-            "<b>Nama: </b>" +"<br>"+ feature.properties.NAME + "<br>" + 
-            "<b>Kondisi: </b>" +"<br>"+ feature.properties.Kondisi + "<br>" + 
+            "<b>Nomor ID: </b>" + "<br>" + feature.properties.No_Id + "<br>" +
+            "<b>Nomor Ruas: </b>" + "<br>" + feature.properties.No_Ruas + "<br>" +
+            "<b>Nama Ruas: </b>" +"<br>"+ feature.properties.NAME + "<br>" + 
+            "<b>Kondisi Jalan: </b>" +"<br>"+
+            "<b>Baik: </b>" + feature.properties.Baik +
+            "<b> Sedang: </b>" + feature.properties.Sedang + "<br>"+
+            "<b>Rusak Ringan: </b>" + feature.properties.Rr +
+            "<b> Rusak Berat: </b>" + feature.properties.Rb + "<br>" + 
+            "<b>Panjang: </b>" + "<br>" + feature.properties.Panjang + " (Meter)" +"<br>" +
+            "<b>Lebar: </b>" + "<br>" + feature.properties.Lebar + " (Meter)" +"<br>" +
+            "<b>Titik Awal: </b>" + "<br>" + feature.properties.Tk_Aw + "<br>" +
+            "<b>Titik Akhir: </b>" + "<br>" + feature.properties.Tk_Ak + "<br>" +
+            "<b>Status Jalan: </b>" + "<br>" + feature.properties.Status + "<br>" +
             "<b>Desa: </b>" + "<br>" + feature.properties.Desa + "<br>" +
-            "<b>STA </b>" + "<br>" + feature.properties.STA + "<br>" +
             "<b>Kecamatan: </b>" + "<br>" + feature.properties.Kecamatan + "<br>" +
-            "<b>Kabupaten: </b>" + "<br>" + feature.properties.Kab_Kot + "<br>";
-            // "<b>Foto: </b>" + "<br>" + "<img src='Database/Nonspatial/Foto/" + feature.properties.Foto + "' width='320'>";
+            "<b>Kebupaten: </b>" + "<br>" + feature.properties.Kab_Kot + "<br>" +
+            "<b>Foto: </b>" + "<br>" + "<img src='Database/Nonspatial/Foto/" + feature.properties.Foto + "' width='300'>"
+            ;
             
             var contentTable = 
             "<table>" + 
             "<tr><th>Nomor Ruas</th><td>" + feature.properties.No_Ruas + "</td></tr>" +
             "<tr><th>Nama</th><td>" + feature.properties.Nm_Ruas + "</td></tr>" +
-            "<tr><th>Status Jalan</th><td>" + feature.properties.Status + "</td></tr>" +
-            "<tr><th>STA</th><td>" + feature.properties.STA + "</td></tr>" +
+            "<tr><th>Panjang</th><td>" + feature.properties.Panjang + "</td></tr>" +
+            "<tr><th>Titik Awal</th><td>" + feature.properties.Tk_Ruas_Aw + "</td></tr>" +
             "<tr><th>Titik Akhir</th><td>" + feature.properties.Tk_Ruas_Ak + "</td></tr>" +
             "<tr><th>Foto</th><td>" + feature.properties.Foto + "</td></tr>" +
             "</table>"; 
+
 
                 layer.on({
                     click: function (e) { //Fungsi ketika obyek diklik
@@ -629,41 +637,33 @@ $.getJSON("Database/Spatial/jlnds_glagah.geojson", function (data) {
 
     var jlnds_glagah = L.geoJson(null, {
         style: function (feature) {
-            if (feature.properties.Kondisi === "BAIK" ) {
+            if (feature.properties.Status === "Jalan Kabupaten" ) {
                 return {
-                    color: "#008000", //Warna garis
+                    color: "#FF3FD5", //Warna garis
+                    dashArray: '',
+                    weight: 5, //Tebal garis
+                    opacity: 1, //Transparansi garis
+                }
+            }
+            else if (feature.properties.Status === "Jalan Lokal" ) {
+                return {
+                    color: "#00BBBB", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
                 }
             }
-            else if (feature.properties.Kondisi === "SEDANG" ) {
+            else if (feature.properties.Status === "Jalan Desa" ) {
                 return {
-                    color: "#FFFF00", //Warna garis
+                    color: "#006666", //Warna garis
                     dashArray: '',
-                    weight: 3, //Tebal garis
+                    weight: 5, //Tebal garis
                     opacity: 1, //Transparansi garis
                 }
             }
-            else if (feature.properties.Kondisi === "RUSAK RINGAN" ) {
+            else if (feature.properties.Status === "Jalan Perekonomian" ) {
                 return {
-                    color: "#FFA500", //Warna garis
-                    dashArray: '',
-                    weight: 3, //Tebal garis
-                    opacity: 1, //Transparansi garis
-                }
-            }
-            else if (feature.properties.Kondisi === "RUSAK BERAT" ) {
-                return {
-                    color: "#FF0000", //Warna garis
-                    dashArray: '',
-                    weight: 3, //Tebal garis
-                    opacity: 1, //Transparansi garis
-                }
-            }
-            else if (feature.properties.Kondisi === "TIDAK TERDEFINISI" ) {
-                return {
-                    color: "#8B4513", //Warna garis
+                    color: "#888800", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
@@ -674,21 +674,31 @@ $.getJSON("Database/Spatial/jlnds_glagah.geojson", function (data) {
         onEachFeature: function (feature, layer) {
             var content = 
             "<font size=2><center><b>" + feature.properties.NAME + "</b></center></font>" + "<br>" +
-            "<b>Nomor: </b>" + "<br>" + feature.properties.No_Ruas + "<br>" +
-            "<b>Nama: </b>" +"<br>"+ feature.properties.NAME + "<br>" + 
-            "<b>Kondisi: </b>" +"<br>"+ feature.properties.Kondisi + "<br>" + 
+            "<b>Nomor ID: </b>" + "<br>" + feature.properties.No_Id + "<br>" +
+            "<b>Nomor Ruas: </b>" + "<br>" + feature.properties.No_Ruas + "<br>" +
+            "<b>Nama Ruas: </b>" +"<br>"+ feature.properties.NAME + "<br>" + 
+            "<b>Kondisi Jalan: </b>" +"<br>"+
+            "<b>Baik: </b>" + feature.properties.Baik +
+            "<b> Sedang: </b>" + feature.properties.Sedang + "<br>"+
+            "<b>Rusak Ringan: </b>" + feature.properties.Rr +
+            "<b> Rusak Berat: </b>" + feature.properties.Rb + "<br>" + 
+            "<b>Panjang: </b>" + "<br>" + feature.properties.Panjang + " (Meter)" +"<br>" +
+            "<b>Lebar: </b>" + "<br>" + feature.properties.Lebar + " (Meter)" +"<br>" +
+            "<b>Titik Awal: </b>" + "<br>" + feature.properties.Tk_Aw + "<br>" +
+            "<b>Titik Akhir: </b>" + "<br>" + feature.properties.Tk_Ak + "<br>" +
+            "<b>Status Jalan: </b>" + "<br>" + feature.properties.Status + "<br>" +
             "<b>Desa: </b>" + "<br>" + feature.properties.Desa + "<br>" +
-            "<b>STA </b>" + "<br>" + feature.properties.STA + "<br>" +
             "<b>Kecamatan: </b>" + "<br>" + feature.properties.Kecamatan + "<br>" +
-            "<b>Kabupaten: </b>" + "<br>" + feature.properties.Kab_Kot + "<br>";
-            // "<b>Foto: </b>" + "<br>" + "<img src='Database/Nonspatial/Foto/" + feature.properties.Foto + "' width='320'>";
+            "<b>Kebupaten: </b>" + "<br>" + feature.properties.Kab_Kot + "<br>" +
+            "<b>Foto: </b>" + "<br>" + "<img src='Database/Nonspatial/Foto/" + feature.properties.Foto + "' width='300'>"
+            ;
             
             var contentTable = 
             "<table>" + 
             "<tr><th>Nomor Ruas</th><td>" + feature.properties.No_Ruas + "</td></tr>" +
             "<tr><th>Nama</th><td>" + feature.properties.Nm_Ruas + "</td></tr>" +
-            "<tr><th>Status Jalan</th><td>" + feature.properties.Status + "</td></tr>" +
-            "<tr><th>STA</th><td>" + feature.properties.STA + "</td></tr>" +
+            "<tr><th>Panjang</th><td>" + feature.properties.Panjang + "</td></tr>" +
+            "<tr><th>Titik Awal</th><td>" + feature.properties.Tk_Ruas_Aw + "</td></tr>" +
             "<tr><th>Titik Akhir</th><td>" + feature.properties.Tk_Ruas_Ak + "</td></tr>" +
             "<tr><th>Foto</th><td>" + feature.properties.Foto + "</td></tr>" +
             "</table>"; 
@@ -726,47 +736,40 @@ $.getJSON("Database/Spatial/jlnds_licin.geojson", function (data) {
 
     var jlnds_licin = L.geoJson(null, {
         style: function (feature) {
-            if (feature.properties.Kondisi === "BAIK" ) {
+            if (feature.properties.Status === "Jalan Kabupaten" ) {
                 return {
-                    color: "#008000", //Warna garis
+                    color: "#FF3FD5", //Warna garis
+                    dashArray: '',
+                    weight: 5, //Tebal garis
+                    opacity: 1, //Transparansi garis
+                }
+            }
+            else if (feature.properties.Status === "Jalan Lokal" ) {
+                return {
+                    color: "#00BBBB", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
                 }
             }
-            else if (feature.properties.Kondisi === "SEDANG" ) {
+            else if (feature.properties.Status === "Jalan Desa" ) {
                 return {
-                    color: "#FFFF00", //Warna garis
+                    color: "#006666", //Warna garis
                     dashArray: '',
-                    weight: 3, //Tebal garis
+                    weight: 5, //Tebal garis
                     opacity: 1, //Transparansi garis
                 }
             }
-            else if (feature.properties.Kondisi === "RUSAK RINGAN" ) {
+            else if (feature.properties.Status === "Jalan Perekonomian" ) {
                 return {
-                    color: "#FFA500", //Warna garis
-                    dashArray: '',
-                    weight: 3, //Tebal garis
-                    opacity: 1, //Transparansi garis
-                }
-            }
-            else if (feature.properties.Kondisi === "RUSAK BERAT" ) {
-                return {
-                    color: "#FF0000", //Warna garis
-                    dashArray: '',
-                    weight: 3, //Tebal garis
-                    opacity: 1, //Transparansi garis
-                }
-            }
-            else if (feature.properties.Kondisi === "TIDAK TERDEFINISI" ) {
-                return {
-                    color: "#8B4513", //Warna garis
+                    color: "#888800", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
                 }
             }
         },
+
 
         onEachFeature: function (feature, layer) {
             var content = 
@@ -823,41 +826,33 @@ $.getJSON("Database/Spatial/jlnds_purwoharjo.geojson", function (data) {
 
     var jlnds_purwoharjo = L.geoJson(null, {
         style: function (feature) {
-            if (feature.properties.Kondisi === "BAIK" ) {
+            if (feature.properties.Status === "Jalan Kabupaten" ) {
                 return {
-                    color: "#008000", //Warna garis
+                    color: "#FF3FD5", //Warna garis
+                    dashArray: '',
+                    weight: 5, //Tebal garis
+                    opacity: 1, //Transparansi garis
+                }
+            }
+            else if (feature.properties.Status === "Jalan Lokal" ) {
+                return {
+                    color: "#00BBBB", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
                 }
             }
-            else if (feature.properties.Kondisi === "SEDANG" ) {
+            else if (feature.properties.Status === "Jalan Desa" ) {
                 return {
-                    color: "#FFFF00", //Warna garis
+                    color: "#006666", //Warna garis
                     dashArray: '',
-                    weight: 3, //Tebal garis
+                    weight: 5, //Tebal garis
                     opacity: 1, //Transparansi garis
                 }
             }
-            else if (feature.properties.Kondisi === "RUSAK RINGAN" ) {
+            else if (feature.properties.Status === "Jalan Perekonomian" ) {
                 return {
-                    color: "#FFA500", //Warna garis
-                    dashArray: '',
-                    weight: 3, //Tebal garis
-                    opacity: 1, //Transparansi garis
-                }
-            }
-            else if (feature.properties.Kondisi === "RUSAK BERAT" ) {
-                return {
-                    color: "#FF0000", //Warna garis
-                    dashArray: '',
-                    weight: 3, //Tebal garis
-                    opacity: 1, //Transparansi garis
-                }
-            }
-            else if (feature.properties.Kondisi === "TIDAK TERDEFINISI" ) {
-                return {
-                    color: "#8B4513", //Warna garis
+                    color: "#888800", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
@@ -921,47 +916,40 @@ $.getJSON("Database/Spatial/jlnds_rogojampi.geojson", function (data) {
 
     var jlnds_rogojampi = L.geoJson(null, {
         style: function (feature) {
-            if (feature.properties.Kondisi === "BAIK" ) {
+            if (feature.properties.Status === "Jalan Kabupaten" ) {
                 return {
-                    color: "#008000", //Warna garis
+                    color: "#FF3FD5", //Warna garis
+                    dashArray: '',
+                    weight: 5, //Tebal garis
+                    opacity: 1, //Transparansi garis
+                }
+            }
+            else if (feature.properties.Status === "Jalan Lokal" ) {
+                return {
+                    color: "#00BBBB", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
                 }
             }
-            else if (feature.properties.Kondisi === "SEDANG" ) {
+            else if (feature.properties.Status === "Jalan Desa" ) {
                 return {
-                    color: "#FFFF00", //Warna garis
+                    color: "#006666", //Warna garis
                     dashArray: '',
-                    weight: 3, //Tebal garis
+                    weight: 5, //Tebal garis
                     opacity: 1, //Transparansi garis
                 }
             }
-            else if (feature.properties.Kondisi === "RUSAK RINGAN" ) {
+            else if (feature.properties.Status === "Jalan Perekonomian" ) {
                 return {
-                    color: "#FFA500", //Warna garis
-                    dashArray: '',
-                    weight: 3, //Tebal garis
-                    opacity: 1, //Transparansi garis
-                }
-            }
-            else if (feature.properties.Kondisi === "RUSAK BERAT" ) {
-                return {
-                    color: "#FF0000", //Warna garis
-                    dashArray: '',
-                    weight: 3, //Tebal garis
-                    opacity: 1, //Transparansi garis
-                }
-            }
-            else if (feature.properties.Kondisi === "TIDAK TERDEFINISI" ) {
-                return {
-                    color: "#8B4513", //Warna garis
+                    color: "#888800", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
                 }
             }
         },
+
 
         onEachFeature: function (feature, layer) {
             var content = 
@@ -1018,47 +1006,40 @@ $.getJSON("Database/Spatial/jlnds_kabat.geojson", function (data) {
 
     var jlnds_kabat = L.geoJson(null, {
         style: function (feature) {
-            if (feature.properties.Kondisi === "BAIK" ) {
+            if (feature.properties.Status === "Jalan Kabupaten" ) {
                 return {
-                    color: "#008000", //Warna garis
+                    color: "#FF3FD5", //Warna garis
+                    dashArray: '',
+                    weight: 5, //Tebal garis
+                    opacity: 1, //Transparansi garis
+                }
+            }
+            else if (feature.properties.Status === "Jalan Lokal" ) {
+                return {
+                    color: "#00BBBB", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
                 }
             }
-            else if (feature.properties.Kondisi === "SEDANG" ) {
+            else if (feature.properties.Status === "Jalan Desa" ) {
                 return {
-                    color: "#FFFF00", //Warna garis
+                    color: "#006666", //Warna garis
                     dashArray: '',
-                    weight: 3, //Tebal garis
+                    weight: 5, //Tebal garis
                     opacity: 1, //Transparansi garis
                 }
             }
-            else if (feature.properties.Kondisi === "RUSAK RINGAN" ) {
+            else if (feature.properties.Status === "Jalan Perekonomian" ) {
                 return {
-                    color: "#FFA500", //Warna garis
-                    dashArray: '',
-                    weight: 3, //Tebal garis
-                    opacity: 1, //Transparansi garis
-                }
-            }
-            else if (feature.properties.Kondisi === "RUSAK BERAT" ) {
-                return {
-                    color: "#FF0000", //Warna garis
-                    dashArray: '',
-                    weight: 3, //Tebal garis
-                    opacity: 1, //Transparansi garis
-                }
-            }
-            else if (feature.properties.Kondisi === "TIDAK TERDEFINISI" ) {
-                return {
-                    color: "#8B4513", //Warna garis
+                    color: "#888800", //Warna garis
                     dashArray: '',
                     weight: 3, //Tebal garis
                     opacity: 1, //Transparansi garis
                 }
             }
         },
+
 
         onEachFeature: function (feature, layer) {
             var content = 
@@ -1534,7 +1515,7 @@ $.getJSON("Database/Spatial/jlnprov.geojson", function (data) {
     var overlaymaps = {
        
         "Jalan Kabupaten": jlnkab24,
-        "Jalan Desa": jln_ds,
+        "Jalan Desa": jln_ds1,
         "Jalan Provinsi": Jalan_Provinsi,
         "Jalan Nasional": Jalan_Nasional,
         "Batas Administrasi": BatasAdmin_Banyuwangi,
