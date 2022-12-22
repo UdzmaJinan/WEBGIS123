@@ -534,7 +534,7 @@ $.getJSON("Database/Spatial/jlnds_ganteng.geojson", function (data) {
     map.createPane("pane_jlnds_ganteng");
     map.getPane("pane_jlnds_ganteng").style.zIndex = 405;
 
-    var jlnds_gambiran = L.geoJson(null, {
+    var jlnds_ganteng = L.geoJson(null, {
         style: function (feature) {
             if (feature.properties.Status === "Jalan Kabupaten" ) {
                 return {
